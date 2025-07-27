@@ -18,7 +18,7 @@ The Weather App Suite is a microservices-based application designed to simulate 
 * **Build Tool:** Maven
 
 ## Architecture
-https://excalidraw.com/#json=UP2DyJ_ov1rnkGbyT2PaX,V_CldiwIHqONCRc73qJK3w
+Weather Producer --sends data--> Kafka <--consumes data-- Weather Consumer
 
 ## How to Run the Application
 
