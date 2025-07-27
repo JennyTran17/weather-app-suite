@@ -1,0 +1,117 @@
+/* Notification styles */
+.notification-item {
+    border-left: none;
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.notification-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--gradient-primary);
+}
+
+.notification-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.notification-item.rain::before {
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+.notification-item.clear::before {
+    background: linear-gradient(to bottom, #f1c40f, #f39c12);
+}
+
+.notification-item.extreme::before {
+    background: linear-gradient(to bottom, #e74c3c, #c0392b);
+}
+
+.notification-item.snow::before {
+    background: linear-gradient(to bottom, #bdc3c7, #95a5a6);
+}
+
+.notification-message {
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
+.notification-message strong {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.notification-timestamp {
+    font-size: 0.85em;
+    color: #888;
+    margin-left: 15px;
+    background-color: rgba(0,0,0,0.05);
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.weather-icon {
+    font-size: 1.5em;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.05);
+    color: var(--primary-color);
+}
+
+.weather-icon.rain {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.weather-icon.clear {
+    color: #f1c40f;
+    background-color: rgba(241, 196, 15, 0.1);
+}
+
+.weather-icon.extreme {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.weather-icon.snow {
+    color: #bdc3c7;
+    background-color: rgba(189, 195, 199, 0.1);
+}
+
+/* Dark mode notification styles */
+.dark-mode .notification-item {
+    background-color: #1e1e1e;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.dark-mode .notification-timestamp {
+    background-color: rgba(255,255,255,0.1);
+    color: #aaa;
+}
+
+.dark-mode .weather-icon {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dark-mode .notification-message strong {
+    color: #3498db;
+}

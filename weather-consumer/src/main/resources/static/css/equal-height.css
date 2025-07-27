@@ -1,0 +1,32 @@
+/* Equal height panels in top row */
+@media (min-width: 768px) {
+    /* Make Connection Status and Preferences panels have equal height */
+    .dashboard .card:nth-child(1),
+    .dashboard .card:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Ensure content fills available space */
+    .dashboard .card:nth-child(1) > div:not(.card-header),
+    .dashboard .card:nth-child(2) > div:not(.card-header) {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    /* Center status text */
+    #status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        margin: 10px 0;
+    }
+    
+    /* Ensure buttons are at bottom */
+    .card > div:has(#connectButton) {
+        margin-top: auto;
+    }
+}

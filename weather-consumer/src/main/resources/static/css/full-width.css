@@ -1,0 +1,51 @@
+/* Full width layout fixes */
+
+/* Ensure container takes full width */
+.container {
+    width: 100vw;
+    max-width: 100vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Remove any margin from body */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure dashboard takes full width */
+.dashboard {
+    width: 100%;
+    margin: 0;
+}
+
+/* Remove any extra margins from cards */
+.card {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Ensure header takes full width */
+.header {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix for tablet and desktop */
+@media (min-width: 768px) {
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Ensure each panel in top row takes exactly 1/3 width */
+    .dashboard .card:nth-child(1),
+    .dashboard .card:nth-child(2),
+    #notifications-container {
+        width: 100%;
+    }
+}

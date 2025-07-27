@@ -1,0 +1,59 @@
+/* Notification panel improvements for new layout */
+
+/* Limit notification panel height when in a row */
+@media (min-width: 768px) {
+    #notifications-container #notificationList {
+        max-height: 200px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0,0,0,0.2) rgba(0,0,0,0.05);
+    }
+    
+    /* Scrollbar styling for webkit browsers */
+    #notifications-container #notificationList::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    #notifications-container #notificationList::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.05);
+        border-radius: 10px;
+    }
+    
+    #notifications-container #notificationList::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+    
+    /* Dark mode scrollbar */
+    .dark-mode #notifications-container #notificationList {
+        scrollbar-color: rgba(255,255,255,0.2) rgba(255,255,255,0.05);
+    }
+    
+    .dark-mode #notifications-container #notificationList::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.05);
+    }
+    
+    .dark-mode #notifications-container #notificationList::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0.2);
+    }
+}
+
+/* Make notification items more compact */
+@media (min-width: 768px) {
+    #notifications-container .notification-item {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+    
+    #notifications-container .notification-message {
+        font-size: 0.95em;
+    }
+    
+    #notifications-container .notification-timestamp {
+        font-size: 0.8em;
+    }
+    
+    #notifications-container .weather-icon {
+        font-size: 1.2em;
+    }
+}

@@ -1,0 +1,276 @@
+/* Responsive design improvements */
+
+/* Base styles for mobile first approach */
+.container {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.header {
+    padding: 15px 0;
+}
+
+.header h1 {
+    font-size: 1.8em;
+}
+
+/* Improved dashboard layout - gallery style */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Set the order of cards */
+.dashboard .card:nth-child(1) { order: 1; } /* Connection Status */
+.dashboard .card:nth-child(2) { order: 2; } /* Your Preferences */
+.dashboard #notifications-container { order: 3; } /* Notifications */
+.dashboard .card:nth-child(3) { order: 4; } /* Current Weather */
+.dashboard .card:nth-child(4) { order: 5; } /* Temperature History */
+
+/* Make notifications span full width */
+#notifications-container {
+    grid-column: 1 / -1;
+}
+
+/* Card spacing improvements */
+.card {
+    margin-bottom: 15px;
+}
+
+/* Add padding to card content */
+.card > div:not(.card-header) {
+    padding: 20px;
+}
+
+/* Status and buttons spacing */
+#status {
+    margin: 15px 0;
+}
+
+/* Button container spacing */
+.card > div:has(#connectButton) {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px 20px;
+}
+
+/* Form groups spacing */
+.form-group {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+/* Filter group spacing */
+.filter-group {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.card-header h2 {
+    font-size: 1.3em;
+}
+
+.weather-temp {
+    font-size: 2.5em;
+}
+
+.weather-condition {
+    font-size: 1.5em;
+}
+
+.chart-container {
+    height: 250px;
+}
+
+#notifications-container {
+    grid-column: span 1;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header {
+        padding: 20px 0;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    /* Top row: Connection Status, Preferences, and Notifications */
+    .dashboard .card:nth-child(1) { 
+        grid-column: span 1;
+        order: 1;
+    }
+    
+    .dashboard .card:nth-child(2) { 
+        grid-column: span 1;
+        order: 2;
+    }
+    
+    #notifications-container { 
+        grid-column: span 1;
+        order: 3;
+    }
+    
+    /* Middle row: Current Weather */
+    .dashboard .card:nth-child(3) {
+        grid-column: 1 / -1;
+        order: 4;
+    }
+    
+    /* Bottom row: Temperature History */
+    .dashboard .card:nth-child(4) {
+        grid-column: 1 / -1;
+        order: 5;
+    }
+    
+    .card-header h2 {
+        font-size: 1.4em;
+    }
+    
+    .weather-temp {
+        font-size: 3em;
+    }
+    
+    .chart-container {
+        height: 280px;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .header {
+        padding: 25px 0;
+    }
+    
+    .header h1 {
+        font-size: 2.2em;
+    }
+    
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    /* Top row: Connection Status, Preferences, and Notifications - equal width */
+    .dashboard .card:nth-child(1) { 
+        grid-column: span 1;
+        order: 1;
+    }
+    
+    .dashboard .card:nth-child(2) { 
+        grid-column: span 1;
+        order: 2;
+    }
+    
+    #notifications-container { 
+        grid-column: span 1;
+        order: 3;
+    }
+    
+    /* Middle row: Current Weather */
+    .dashboard .card:nth-child(3) {
+        grid-column: 1 / -1;
+        order: 4;
+    }
+    
+    /* Bottom row: Temperature History */
+    .dashboard .card:nth-child(4) {
+        grid-column: 1 / -1;
+        order: 5;
+    }
+    
+    .card-header h2 {
+        font-size: 1.5em;
+    }
+    
+    .weather-temp {
+        font-size: 3.5em;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header, #themeToggle, .btn {
+        display: none !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+    }
+    
+    .card-header {
+        background: none !important;
+        color: #000 !important;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .card-header h2 {
+        color: #000 !important;
+    }
+    
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+.btn:focus, .form-control:focus, .filter-btn:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0066cc;
+        --secondary-color: #008800;
+        --danger-color: #cc0000;
+    }
+    
+    .card {
+        border: 2px solid #000;
+    }
+    
+    .notification-item {
+        border: 1px solid #000;
+    }
+    
+    .btn {
+        border: 2px solid #000;
+    }
+}

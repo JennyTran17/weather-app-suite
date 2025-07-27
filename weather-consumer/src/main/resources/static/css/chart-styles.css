@@ -1,0 +1,117 @@
+/* Chart styles */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.chart-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    border-radius: 3px 3px 0 0;
+}
+
+/* Chart legend styles */
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    font-size: 0.9em;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.legend-color.temperature {
+    background-color: #3498db;
+}
+
+/* Chart tooltip customization */
+.custom-chart-tooltip {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 5px !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 12px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    border: none !important;
+}
+
+/* Chart grid lines */
+.chart-grid-line {
+    stroke: rgba(0, 0, 0, 0.05) !important;
+    stroke-width: 1px !important;
+}
+
+/* Dark mode chart styles */
+.dark-mode .chart-container {
+    background-color: rgba(30, 30, 30, 0.8);
+}
+
+.dark-mode .chart-grid-line {
+    stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Chart animations */
+@keyframes chartFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chart-container {
+    animation: chartFadeIn 0.8s ease-out;
+}
+
+/* No data message */
+.no-data-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Chart controls */
+.chart-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.chart-control-btn {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #666;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: var(--transition);
+}
+
+.chart-control-btn:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}

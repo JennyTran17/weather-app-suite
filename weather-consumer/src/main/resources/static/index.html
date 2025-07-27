@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Notifications</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/weather-dashboard.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/notification-styles.css">
+    <link rel="stylesheet" href="/css/chart-styles.css">
+    <link rel="stylesheet" href="/css/weather-details.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/panel-spacing.css">
+    <link rel="stylesheet" href="/css/notification-panel.css">
+    <link rel="stylesheet" href="/css/equal-height.css">
+    <link rel="stylesheet" href="/css/full-width.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/js/weather-dashboard.js" defer></script>
+</head>
+<body>
+<div class="header">
+    <h1><i class="fas fa-cloud-sun"></i> Weather Notifications Dashboard</h1>
+</div>
+
+<div class="container full-width">
+    <div class="dashboard">
+        <!-- Connection Status Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-plug"></i> Connection Status</h2>
+            </div>
+            <div id="status" class="disconnected">Disconnected</div>
+            <div style="text-align: center;">
+                <button id="connectButton" class="btn btn-success" onclick="connect()"><i class="fas fa-link"></i> Connect</button>
+                <button id="disconnectButton" class="btn btn-danger" onclick="disconnect()" disabled><i class="fas fa-unlink"></i> Disconnect</button>
+            </div>
+        </div>
+        
+        <!-- User Preferences Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-user-cog"></i> Your Preferences</h2>
+            </div>
+            <div class="form-group">
+                <label for="citySelect">Select City:</label>
+                <select id="citySelect" class="form-control">
+                    <option value="all">All Cities</option>
+                    <option value="Athlone" selected>Athlone</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Weather Conditions:</label>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-condition="all" onclick="filterByCondition(this)">All</button>
+                    <button class="filter-btn" data-condition="rain" onclick="filterByCondition(this)">Rain</button>
+                    <button class="filter-btn" data-condition="clear" onclick="filterByCondition(this)">Clear</button>
+                    <button class="filter-btn" data-condition="extreme" onclick="filterByCondition(this)">Extreme</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Current Weather Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-temperature-high"></i> Current Weather</h2>
+            </div>
+            <div id="weatherDisplay" class="weather-display">
+                <div id="weatherIcon" class="weather-icon"><i class="fas fa-cloud fa-3x"></i></div>
+                <div id="weatherTemp" class="weather-temp">--°C</div>
+                <div id="weatherCondition" class="weather-condition">--</div>
+                <div id="weatherCity" class="weather-city">--</div>
+                <div class="weather-details">
+                    <div class="weather-detail">
+                        <i class="fas fa-calendar-day"></i>
+                        <span id="currentDate">--</span>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-clock"></i>
+                        <span id="currentTime">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Temperature History Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-line"></i> Temperature History</h2>
+            </div>
+            <div class="chart-controls">
+                <button class="chart-control-btn" id="toggleChartType" title="Toggle Chart Type">
+                    <i class="fas fa-chart-bar"></i>
+                </button>
+                <button class="chart-control-btn" id="clearChartData" title="Clear Chart Data">
+                    <i class="fas fa-eraser"></i>
+                </button>
+            </div>
+            <div class="chart-container">
+                <canvas id="tempChart"></canvas>
+                <div class="no-data-message" id="noDataMessage">No temperature data available yet</div>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <div class="legend-color temperature"></div>
+                    <span>Temperature (°C)</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notifications Card -->
+        <div id="notifications-container" class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-bell"></i> Real-time Notifications</h2>
+                <button class="btn btn-primary" onclick="clearNotifications()"><i class="fas fa-trash"></i> Clear</button>
+            </div>
+            <div id="notificationList">
+                <div class="notification-item">
+                    <div class="weather-icon"><i class="fas fa-info-circle"></i></div>
+                    <div class="notification-message">Connect to start receiving weather notifications.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Theme Toggle Button -->
+<div id="themeToggle" class="tooltip">
+    <i class="fas fa-moon"></i>
+    <span class="tooltiptext">Toggle Dark Mode</span>
+</div>
+
+<!-- Script moved to external file: /js/weather-dashboard.js -->
+</body>
+</html>

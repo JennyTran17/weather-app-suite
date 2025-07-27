@@ -1,0 +1,108 @@
+/* Weather details styles */
+.weather-details {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.weather-detail {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0,0,0,0.05);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.9em;
+}
+
+.weather-detail i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.dark-mode .weather-detail {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Weather display enhancements */
+.weather-display {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    padding: 30px 20px;
+    transition: var(--transition);
+}
+
+.weather-display::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.8) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.dark-mode .weather-display::after {
+    background: linear-gradient(to bottom, 
+                rgba(30,30,30,0) 0%,
+                rgba(30,30,30,0.8) 100%);
+}
+
+.weather-display > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Weather condition backgrounds */
+.weather-display.rain {
+    background: linear-gradient(to bottom right, #3498db, #2980b9);
+    color: white;
+}
+
+.weather-display.clear {
+    background: linear-gradient(to bottom right, #f1c40f, #f39c12);
+    color: white;
+}
+
+.weather-display.extreme {
+    background: linear-gradient(to bottom right, #e74c3c, #c0392b);
+    color: white;
+}
+
+.weather-display.snow {
+    background: linear-gradient(to bottom right, #bdc3c7, #7f8c8d);
+    color: white;
+}
+
+.weather-display.cloud {
+    background: linear-gradient(to bottom right, #95a5a6, #7f8c8d);
+    color: white;
+}
+
+/* Weather icon enhancements */
+.weather-display .weather-icon {
+    background-color: rgba(255,255,255,0.2);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.5em;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.weather-display .weather-icon i {
+    font-size: 2em;
+    color: white;
+}
+
+.weather-display .weather-city {
+    color: rgba(255,255,255,0.8);
+}
