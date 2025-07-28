@@ -62,10 +62,11 @@ Weather Producer --sends data--> Kafka <--consumes data-- Weather Consumer
     docker compose logs -f weather-consumer
     ```
   Look for output related to processing weather data.
-* **Access Consumer API (if applicable):** If your `weather-consumer` exposes a REST endpoint (e.g., on `http://localhost:8081`), you can use `curl` or a web browser:
+* **Access Consumer API (if applicable):** `weather-consumer` serves a frontend page or static content at `http://localhost:8081/index.html`, you can open it in a browser or use `curl`:
     ```bash
-    curl http://localhost:8081/weather # Adjust endpoint if different
+    curl http://localhost:8081/index.html
     ```
+
 
 ## Project Structure
 weather-app-suite/
